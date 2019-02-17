@@ -3,28 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/posts/beginning/</loc>
+    <loc>https://e4r7hbug.github.io/posts/beginning/</loc>
     <lastmod>2019-02-17T03:31:50-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://e4r7hbug.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/posts/</loc>
+    <loc>https://e4r7hbug.github.io/posts/</loc>
     <lastmod>2019-02-17T03:31:50-08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://e4r7hbug.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://e4r7hbug.github.io/</loc>
     <lastmod>2019-02-17T03:31:50-08:00</lastmod>
     <priority>0</priority>
   </url>

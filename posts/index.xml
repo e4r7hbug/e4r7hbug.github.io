@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on e4r7hbug</title>
-    <link>http://example.org/posts/</link>
+    <link>https://e4r7hbug.github.io/posts/</link>
     <description>Recent content in Posts on e4r7hbug</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 13 Feb 2019 23:36:55 -0800</lastBuildDate>
     
-	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://e4r7hbug.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Beginning</title>
-      <link>http://example.org/posts/beginning/</link>
+      <link>https://e4r7hbug.github.io/posts/beginning/</link>
       <pubDate>Wed, 13 Feb 2019 23:36:55 -0800</pubDate>
       
-      <guid>http://example.org/posts/beginning/</guid>
+      <guid>https://e4r7hbug.github.io/posts/beginning/</guid>
       <description>Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
  Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening.</description>
     </item>

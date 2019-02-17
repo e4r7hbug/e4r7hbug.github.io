@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Beginning :: e4r7hbug — Trails of thoughts.</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
+ Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://example.org/posts/beginning/" />
+
+
+<link rel="stylesheet" href="http://example.org/assets/style.css">
+
+  <link rel="stylesheet" href="http://example.org/assets/green.css">
+
+
+
+<link rel="stylesheet" href="http://example.org/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://example.org/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="http://example.org/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Beginning :: e4r7hbug — Trails of thoughts." />
+<meta name="twitter:description" content="Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
+ Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening." />
+<meta name="twitter:site" content="http://example.org/" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Beginning :: e4r7hbug — Trails of thoughts.">
+<meta property="og:description" content="Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
+ Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening." />
+<meta property="og:url" content="http://example.org/posts/beginning/" />
+<meta property="og:site_name" content="Beginning" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2019-02-13 23:36:55 -0800 PST" />
+
+
+
+
+
+
+
+</head>
+<body class="">
+<div class="container">
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://example.org/">
+  <div class="logo">
+    e4r7hbug
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/resume/">résumé</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/resume/">résumé</a></li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  <div class="post">
+    <h1 class="post-title"><a href="http://example.org/posts/beginning/">Beginning</a></h1>
+    <div class="post-meta">
+      <span class="post-date">
+        2019-02-13
+      </span>
+      <span class="post-date-modified">Last modified: 2019-02-17 03:31:50 -0800 PST</span>
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h1 id="notes">Notes</h1>
+
+<p>I&rsquo;ve wanted to write a blog for a while to keep track of my development and
+scraps of knowledge. Here&rsquo;s my experience between a few static site
+generators I&rsquo;m deciding on.</p>
+
+<ul>
+<li><a href="https://gohugo.io">Hugo</a></li>
+<li><a href="https://jekyllrb.com">Jekyll</a></li>
+<li><a href="https://getnikola.com">Nikola</a></li>
+</ul>
+
+<h2 id="hugo">Hugo</h2>
+
+<p>I decided to forgo the prepackaged binary for the fun of using <code>go get</code>. I
+like to think that I can see all the text scroll by and understand what&rsquo;s
+really happening. That new site builder and web server feel super fast!</p>
+
+<pre><code class="language-bash">$ go get -u -v --tags extended github.com/gohugoio/hugo
+$ hugo new site test-site
+$ cd test-site
+$ hugo server -D  # Same as --buildDrafts
+</code></pre>
+
+<p>O, nothing is served. I see, I need a theme. O, that <a href="https://themes.gohugo.io">https://themes.gohugo.io</a>
+gallery, talk about eye candy.
+<a href="https://themes.gohugo.io/hugo-theme-terminal/">Terminal</a>, I choose you! O,
+Git Submodules, I still can&rsquo;t decide if I like you.</p>
+
+<pre><code class="language-bash">$ git init
+$ git submodule add https://github.com/panr/hugo-theme-terminal.git themes/terminal
+$ echo 'theme = &quot;terminal&quot;' &gt;&gt; config.toml
+$ hugo serve
+</code></pre>
+
+<p>ooOOoo, hey there sexy. Sexy content to go with that sexy theme.</p>
+
+<pre><code class="language-bash">$ hugo new posts/beginning.md
+$ vim content/posts/beginning.md
+$ hugo serve -D  # Same as --buildDrafts
+</code></pre>
+
+<p>O! The page automatically refreshes on content changes, what fun! And then to
+publish.</p>
+
+<pre><code class="language-bash">$ hugo
+$ ls public/
+</code></pre>
+
+<p>So, GitHub Pages refuses to allow anything but a flat structure for User
+Pages sites. I guess we&rsquo;re going to follow the submodule <code>public/</code> model in
+<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Hosting on
+GitHub</a>.</p>
+
+<pre><code class="language-bash">$ rm -r public/
+$ git submodule add -- git@github.com:e4r7hbug/e4r7hbug.github.io.git public
+$ hugo
+$ cd public/
+$ git add .
+$ git commit -v  # Same as --verbose
+$ git push
+</code></pre>
+
+<h2 id="jekyll">Jekyll</h2>
+
+<p>This seems to be the biggest behemoth at the moment with the backing of
+<a href="https://pages.github.com">GitHub Pages</a>. It&rsquo;s a good default, has a large
+community, still gets regular releases since 2008 it seems. Ruby ain&rsquo;t so
+bad.</p>
+
+<p>Setup was as simple as promised.</p>
+
+<pre><code class="language-bash">$ gem install bundler jekyll
+$ jekyll new test-site
+$ cd test-site
+$ jekyll serve
+</code></pre>
+
+<p>New post is all about that naming.</p>
+
+<pre><code class="language-bash">$ vim _posts/2019-02-13-beginning.md
+</code></pre>
+
+<p>Refresh the page and content is there, nice! Publishing seems to be with a
+simple <code>push</code>.</p>
+
+<pre><code class="language-bash">$ git add .
+$ git commit -v  # Same as --verbose
+$ git push
+</code></pre>
+
+<h2 id="nikola">Nikola</h2>
+
+<p>Let&rsquo;s use <a href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a> for the fun of
+it.</p>
+
+<pre><code class="language-bash">$ touch Pipfile
+$ pipenv install --skip-lock pip wheel setuptools
+$ pipenv install --skip-lock nikola[extras]
+$ pipenv run nikola init test-site
+# Lots of questions to answer in the wizard
+$ mv Pipfile test-site/
+$ cd test-site/
+$ pipenv run nikola auto
+</code></pre>
+
+<p>Let&rsquo;s create a post.</p>
+
+<pre><code class="language-bash">$ pipenv run nikola new_post -e
+</code></pre>
+
+<p>O, reStructuredText, I used to use you all the time with Python
+documentation. Lately I feel like Markdown. And it looks like by default
+<code>conf.py</code> comes configured for such a thing, bravo.</p>
+
+<pre><code class="language-bash">$ vim posts/beginning.md
+</code></pre>
+
+<p>Compiling and <code>livereload</code> are a little sluggish, but bearable. The default
+theme is basic and, how nice, tries to use the full width of the viewport.</p>
+
+<pre><code class="language-bash">$ pipenv run nikola build
+$ ls output/
+</code></pre>
+
+<p>Hm…not sure how to switch to <code>docs/</code>.</p>
+
+<h1 id="ending-thoughts">Ending Thoughts</h1>
+
+<ul>
+<li><p>It seems like everyone wants to show off how fast they with those compile
+times in the server logs</p>
+
+<ul>
+<li>Hugo is fastest &lt; Jekyll &lt; Nikola is slowest</li>
+</ul></li>
+
+<li><p>GitHub Pages has some tight integration with Jekyll</p></li>
+</ul>
+
+    </div>
+    
+
+    
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2019 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="http://example.org/assets/main.js"></script>
+<script src="http://example.org/assets/prism.js"></script>
+
+  
+</div>
+
+</body>
+</html>

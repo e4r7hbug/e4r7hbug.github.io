@@ -9,7 +9,7 @@
 <meta name="description" content="LDAP Lookups For OpenVPN My coworker was having some issues with the ldap3 Package behaving oddly. This came about because OpenVPN Access Server 2.8.0 changed from python-ldap to ldap3.
 The idea being, have OpenVPN authenticate with Okta and assign VPN Profiles matching your Active Directory (AD) Group.
 The Problem He was trying to query the Okta LDAP endpoint for a list of Groups that a User belongs to.
-Solution Once I installed Apache Directory, I could more easily view the query results." />
+The initial query tested only gave back Users without information about what Groups they are members of." />
 <meta name="keywords" content="active directory, ldap3, python" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://e4r7hbug.github.io/posts/ldap3/" />
@@ -117,7 +117,7 @@ Solution Once I installed Apache Directory, I could more easily view the query r
       <span class="post-date">
         2020-05-14
       </span>
-      <span class="post-date-modified">Last modified: 2020-05-14 20:02:43 -0700 -0700</span>
+      <span class="post-date-modified">Last modified: 2020-05-14 20:12:08 -0700 -0700</span>
       
     </div>
 
@@ -146,6 +146,16 @@ matching your Active Directory (AD) Group.</p>
 <h2 id="the-problem">The Problem</h2>
 <p>He was trying to query the Okta LDAP endpoint for a list of Groups that a User
 belongs to.</p>
+<p>The initial query tested only gave back Users without information about what
+Groups they are members of. We figured out that setting <a href="https://ldap3.readthedocs.io/en/latest/schema.html#operational-attributes">optional
+attributes</a>
+would add the Group membership details with <code>attributes='memberOf'</code>. This
+wasn&rsquo;t ideal because he wasn&rsquo;t sure we would have access to modify the global
+configuration parameters as in the example.</p>
+<p>The second query took an exorbitant amount of time to execute. This was
+probably caused by searching with <code>attributes='*'</code> to get back all possible
+attributes associated with a User. It might be the Module needing to do
+subsequent searches for each object returned.</p>
 <h2 id="solution">Solution</h2>
 <p>Once I installed <a href="https://directory.apache.org/studio/">Apache Directory</a>, I
 could more easily view the query results. After some clicking around, I drilled

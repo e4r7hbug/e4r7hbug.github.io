@@ -1,1 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Using The Python ldap3 Package :: e4r7hbug — Trails of thoughts.</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="LDAP Lookups For OpenVPN My coworker was having some issues with the ldap3 Package behaving oddly. This came about because OpenVPN Access Server 2.8.0 changed from python-ldap to ldap3.
+The idea being, have OpenVPN authenticate with Okta and assign VPN Profiles matching your Active Directory (AD) Group.
+The Problem He was trying to query the Okta LDAP endpoint for a list of Groups that a User belongs to.
+Solution Once I installed Apache Directory, I could more easily view the query results." />
+<meta name="keywords" content="active directory, ldap3, python" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://e4r7hbug.github.io/posts/ldap3/" />
 
+
+
+
+<link rel="stylesheet" href="https://e4r7hbug.github.io/assets/style.css">
+
+  <link rel="stylesheet" href="https://e4r7hbug.github.io/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://e4r7hbug.github.io/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://e4r7hbug.github.io/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://e4r7hbug.github.io/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:creator" content="" />
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Using The Python ldap3 Package :: e4r7hbug">
+<meta property="og:description" content="Example of getting a list of Groups with a specific member." />
+<meta property="og:url" content="https://e4r7hbug.github.io/posts/ldap3/" />
+<meta property="og:site_name" content="Using The Python ldap3 Package" />
+
+  <meta property="og:image" content="https://e4r7hbug.github.io/">
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-05-14 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container full headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="https://e4r7hbug.github.io/">
+  <div class="logo">
+    e4r7hbug
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/resume/">résumé</a></li>
+        
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/resume/">résumé</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  <div class="post">
+    <h1 class="post-title"><a href="https://e4r7hbug.github.io/posts/ldap3/">Using The Python ldap3 Package</a></h1>
+    <div class="post-meta">
+      <span class="post-date">
+        2020-05-14
+      </span>
+      <span class="post-date-modified">Last modified: 2020-05-14 19:57:49 -0700 -0700</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://e4r7hbug.github.io/tags/ad/">ad</a>&nbsp;
+        
+          #<a href="https://e4r7hbug.github.io/tags/ldap/">ldap</a>&nbsp;
+        
+          #<a href="https://e4r7hbug.github.io/tags/python/">python</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      <h1 id="ldap-lookups-for-openvpn">LDAP Lookups For OpenVPN</h1>
+<p>My coworker was having some issues with the
+<a href="https://ldap3.readthedocs.io/en/latest/index.html">ldap3</a> Package behaving
+oddly. This came about because OpenVPN Access Server 2.8.0 changed from
+<a href="https://www.python-ldap.org/">python-ldap</a> to <code>ldap3</code>.</p>
+<p>The idea being, have OpenVPN authenticate with Okta and assign VPN Profiles
+matching your Active Directory (AD) Group.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>He was trying to query the Okta LDAP endpoint for a list of Groups that a User
+belongs to.</p>
+<h2 id="solution">Solution</h2>
+<p>Once I installed <a href="https://directory.apache.org/studio/">Apache Directory</a>, I
+could more easily view the query results. After some clicking around, I drilled
+down to create a Search.</p>
+<pre><code>DIT
+└── Root DSE (2)
+  └── dc=business,dc=okta,dc=com
+     └── ou=groups
+         └── cn=vpn1
+</code></pre><p>I right-clicked on <code>cn=vpn1</code> and selected <code>New -&gt; New Search…</code>. This is where I
+learned more about the <code>Search Base</code> and <code>Filter</code> fields.</p>
+<ul>
+<li>Search Base: <code>cn=vpn1,ou=groups,dc=business,dc=okta,dc=com</code></li>
+<li>Filter: <code>(objectClass=*)</code></li>
+</ul>
+<p>Looking in the <code>Attribute Description</code> column of <code>cn=vpn1</code>, I noticed that
+<code>objectClass</code> was one of the listed attributes. Then I thought, maybe this
+thing can create the search for me if I can click on the line with peoples&rsquo;s
+names? Right-clicking on the line with:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uniqueMember</td>
+<td><a href="mailto:uid=me@business.com">uid=me@business.com</a>,ou=users,dc=business,dc=okta,dc=com&rsquo;</td>
+</tr>
+</tbody>
+</table>
+<p>I was able to select <code>New Search…</code> and it had the fields populated for me.</p>
+<ul>
+<li>Search Base: <code>cn=vpn1,ou=groups,dc=business,dc=okta,dc=com</code></li>
+<li>Filter: <code>(uniqueMember=uid=me@business.com,ou=users,dc=business,dc=okta,dc=com)</code></li>
+</ul>
+<p>This was close enough, but when I tested out the query with <code>ldap3</code>, I got an
+object back that was essentially a string that we would need to parse.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">connection<span style="color:#f92672">.</span>search(
+    search_base<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cn=vpn1,ou=groups,dc=business,dc=okta,dc=com&#39;</span>,
+    search_filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;(uniqueMember=uid=me@business.com)&#39;</span>,
+)
+<span style="color:#75715e"># Search results are stored in `connection.entries` as a list</span>
+
+vpn_groups <span style="color:#f92672">=</span> set(entry<span style="color:#f92672">.</span>entry_dn <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> connection<span style="color:#f92672">.</span>entries)
+
+<span style="color:#66d9ef">return</span> vpn_groups
+<span style="color:#75715e"># {&#39;cn=vpn1,ou=groups,dc=business,dc=okta,dc=com&#39;}</span>
+</code></pre></div><p>That&rsquo;s when I remembered he was testing some stuff with attributes. In the
+Search properties, I noticed there was a <code>Returning Attributes</code> field. I looked
+that up and it&rsquo;s supposed to give you back the attributes you want from the
+returned objects. So I tried adding <code>cn</code> as an attribute and got back a list
+that didn&rsquo;t need parsing.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">connection<span style="color:#f92672">.</span>search(
+    search_base<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cn=vpn1,ou=groups,dc=business,dc=okta,dc=com&#39;</span>,
+    search_filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;(uniqueMember=uid=me@business.com)&#39;</span>,
+    attributes<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;cn&#39;</span>],
+)
+<span style="color:#75715e"># Search results are stored in `connection.entries` as a list</span>
+
+vpn_groups <span style="color:#f92672">=</span> set(entry<span style="color:#f92672">.</span>cn<span style="color:#f92672">.</span>value <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> connection<span style="color:#f92672">.</span>entries)
+
+<span style="color:#66d9ef">return</span> vpn_groups
+<span style="color:#75715e"># {&#39;vpn1&#39;}</span>
+</code></pre></div><p>Nice! But is there a way for me to get all of the Groups? Turns out, if you
+remove the <code>cn=vpn1</code> from the Search Base, you query all of the Groups. With
+this, we get a list of all Groups where I am a member.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">connection<span style="color:#f92672">.</span>search(
+    search_base<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ou=groups,dc=business,dc=okta,dc=com&#39;</span>,
+    search_filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;(uniqueMember=uid=me@business.com)&#39;</span>,
+    attributes<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;cn&#39;</span>],
+)
+<span style="color:#75715e"># Search results are stored in `connection.entries` as a list</span>
+
+all_groups <span style="color:#f92672">=</span> set(entry<span style="color:#f92672">.</span>cn<span style="color:#f92672">.</span>value <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> connection<span style="color:#f92672">.</span>entries)
+
+<span style="color:#66d9ef">return</span> all_groups
+<span style="color:#75715e"># {&#39;all&#39;, &#39;california&#39;, &#39;devops&#39;, &#39;testvpn&#39;, &#39;productionvpn&#39;, &#39;vpn1&#39;}</span>
+</code></pre></div><p>Even better! Now let&rsquo;s try and filter this back down to only Groups with the
+word <code>vpn</code>. My coworker gave me the last piece of the Filter to glob match the
+names. Doing <code>(&amp;(cn=*vpn*)(uniqueMember=uid=me@business.com))</code> means we want
+results where the Group name has <code>vpn</code> in it AND I am a member. So the final
+piece looks about:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#e6db74">&#34;&#34;&#34;Get Group names that a User belongs to using Okta LDAP.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">MIT License
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Copyright (c) 2020 Nate Tangsurat
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Permission is hereby granted, free of charge, to any person obtaining a copy
+</span><span style="color:#e6db74">of this software and associated documentation files (the &#34;Software&#34;), to deal
+</span><span style="color:#e6db74">in the Software without restriction, including without limitation the rights
+</span><span style="color:#e6db74">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+</span><span style="color:#e6db74">copies of the Software, and to permit persons to whom the Software is
+</span><span style="color:#e6db74">furnished to do so, subject to the following conditions:
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">The above copyright notice and this permission notice shall be included in all
+</span><span style="color:#e6db74">copies or substantial portions of the Software.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">THE SOFTWARE IS PROVIDED &#34;AS IS&#34;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+</span><span style="color:#e6db74">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+</span><span style="color:#e6db74">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+</span><span style="color:#e6db74">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+</span><span style="color:#e6db74">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+</span><span style="color:#e6db74">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+</span><span style="color:#e6db74">SOFTWARE.
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+<span style="color:#f92672">import</span> ldap3
+
+HOST <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ldaps://business.ldap.okta.com&#39;</span>
+USER <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;uid=secret_read_only@business.com,dc=business,dc=okta,dc=com&#39;</span>
+PASSWORD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SUPA_SECRET_PARADISE_IN_VAULT&#39;</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    <span style="color:#e6db74">&#34;&#34;&#34;Test LDAP query.&#34;&#34;&#34;</span>
+    vpn_groups <span style="color:#f92672">=</span> set()
+
+    connection <span style="color:#f92672">=</span> ldap3<span style="color:#f92672">.</span>Connection(HOST, user<span style="color:#f92672">=</span>USER, password<span style="color:#f92672">=</span>PASSWORD, auto_bind<span style="color:#f92672">=</span>True)
+
+    search_base <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ou=groups,dc=business,dc=okta,dc=com&#39;</span>
+    search_filter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;(&amp;(cn=*vpn*)(uniqueMember=uid={user}@business.com))&#39;</span><span style="color:#f92672">.</span>format(user<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;me&#39;</span>)
+
+    query_ok <span style="color:#f92672">=</span> connection<span style="color:#f92672">.</span>search(
+        search_base<span style="color:#f92672">=</span>search_base,
+        search_filter<span style="color:#f92672">=</span>search_filter,
+        attributes<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;cn&#39;</span>],
+    )
+    <span style="color:#75715e"># Search results are stored in `connection.entries` as a list</span>
+
+    <span style="color:#66d9ef">if</span> query_ok:
+        vpn_groups <span style="color:#f92672">=</span> set(entry<span style="color:#f92672">.</span>cn<span style="color:#f92672">.</span>value <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> connection<span style="color:#f92672">.</span>entries)
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Query did not return results.&#39;</span>)
+
+    <span style="color:#66d9ef">return</span> vpn_groups
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    main()
+</code></pre></div>
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+          
+            <span class="button next">
+              <a href="https://e4r7hbug.github.io/posts/beginning/">
+                <span class="button__text">Beginning</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+    
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://e4r7hbug.github.io/assets/main.js"></script>
+<script src="https://e4r7hbug.github.io/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

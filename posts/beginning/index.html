@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Beginning :: e4r7hbug — Trails of thoughts.</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
+ Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening. That new site builder and web server feel super fast!" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://e4r7hbug.github.io/posts/beginning/" />
 
+
+
+
+<link rel="stylesheet" href="https://e4r7hbug.github.io/assets/style.css">
+
+  <link rel="stylesheet" href="https://e4r7hbug.github.io/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://e4r7hbug.github.io/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://e4r7hbug.github.io/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://e4r7hbug.github.io/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:creator" content="" />
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Beginning :: e4r7hbug">
+<meta property="og:description" content="Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
+ Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening. That new site builder and web server feel super fast!" />
+<meta property="og:url" content="https://e4r7hbug.github.io/posts/beginning/" />
+<meta property="og:site_name" content="Beginning" />
+
+  
+    <meta property="og:image" content="https://e4r7hbug.github.io/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2019-02-13 23:36:55 -0800 -0800" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container full headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="https://e4r7hbug.github.io/">
+  <div class="logo">
+    e4r7hbug
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/resume/">résumé</a></li>
+        
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/resume/">résumé</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  <div class="post">
+    <h1 class="post-title"><a href="https://e4r7hbug.github.io/posts/beginning/">Beginning</a></h1>
+    <div class="post-meta">
+      <span class="post-date">
+        2019-02-13
+      </span>
+      <span class="post-date-modified">Last modified: 2020-05-14 19:57:49 -0700 -0700</span>
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      <h1 id="notes">Notes</h1>
+<p>I&rsquo;ve wanted to write a blog for a while to keep track of my development and
+scraps of knowledge. Here&rsquo;s my experience between a few static site
+generators I&rsquo;m deciding on.</p>
+<ul>
+<li><a href="https://gohugo.io">Hugo</a></li>
+<li><a href="https://jekyllrb.com">Jekyll</a></li>
+<li><a href="https://getnikola.com">Nikola</a></li>
+</ul>
+<h2 id="hugo">Hugo</h2>
+<p>I decided to forgo the prepackaged binary for the fun of using <code>go get</code>. I
+like to think that I can see all the text scroll by and understand what&rsquo;s
+really happening. That new site builder and web server feel super fast!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u -v --tags extended github.com/gohugoio/hugo
+$ hugo new site test-site
+$ cd test-site
+$ hugo server -D  <span style="color:#75715e"># Same as --buildDrafts</span>
+</code></pre></div><p>O, nothing is served. I see, I need a theme. O, that <a href="https://themes.gohugo.io">https://themes.gohugo.io</a>
+gallery, talk about eye candy.
+<a href="https://themes.gohugo.io/hugo-theme-terminal/">Terminal</a>, I choose you! O,
+Git Submodules, I still can&rsquo;t decide if I like you.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git init
+$ git submodule add https://github.com/panr/hugo-theme-terminal.git themes/terminal
+$ echo <span style="color:#e6db74">&#39;theme = &#34;terminal&#34;&#39;</span> &gt;&gt; config.toml
+$ hugo serve
+</code></pre></div><p>ooOOoo, hey there sexy. Sexy content to go with that sexy theme.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new posts/beginning.md
+$ vim content/posts/beginning.md
+$ hugo serve -D  <span style="color:#75715e"># Same as --buildDrafts</span>
+</code></pre></div><p>O! The page automatically refreshes on content changes, what fun! And then to
+publish.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo
+$ ls public/
+</code></pre></div><p>So, GitHub Pages refuses to allow anything but a flat structure for User
+Pages sites. I guess we&rsquo;re going to follow the submodule <code>public/</code> model in
+<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Hosting on
+GitHub</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rm -r public/
+$ git submodule add -- git@github.com:e4r7hbug/e4r7hbug.github.io.git public
+$ hugo
+$ cd public/
+$ git add .
+$ git commit -v  <span style="color:#75715e"># Same as --verbose</span>
+$ git push
+</code></pre></div><h2 id="jekyll">Jekyll</h2>
+<p>This seems to be the biggest behemoth at the moment with the backing of
+<a href="https://pages.github.com">GitHub Pages</a>. It&rsquo;s a good default, has a large
+community, still gets regular releases since 2008 it seems. Ruby ain&rsquo;t so
+bad.</p>
+<p>Setup was as simple as promised.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gem install bundler jekyll
+$ jekyll new test-site
+$ cd test-site
+$ jekyll serve
+</code></pre></div><p>New post is all about that naming.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim _posts/2019-02-13-beginning.md
+</code></pre></div><p>Refresh the page and content is there, nice! Publishing seems to be with a
+simple <code>push</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git add .
+$ git commit -v  <span style="color:#75715e"># Same as --verbose</span>
+$ git push
+</code></pre></div><h2 id="nikola">Nikola</h2>
+<p>Let&rsquo;s use <a href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a> for the fun of
+it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ touch Pipfile
+$ pipenv install --skip-lock pip wheel setuptools
+$ pipenv install --skip-lock nikola<span style="color:#f92672">[</span>extras<span style="color:#f92672">]</span>
+$ pipenv run nikola init test-site
+<span style="color:#75715e"># Lots of questions to answer in the wizard</span>
+$ mv Pipfile test-site/
+$ cd test-site/
+$ pipenv run nikola auto
+</code></pre></div><p>Let&rsquo;s create a post.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pipenv run nikola new_post -e
+</code></pre></div><p>O, reStructuredText, I used to use you all the time with Python
+documentation. Lately I feel like Markdown. And it looks like by default
+<code>conf.py</code> comes configured for such a thing, bravo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim posts/beginning.md
+</code></pre></div><p>Compiling and <code>livereload</code> are a little sluggish, but bearable. The default
+theme is basic and, how nice, tries to use the full width of the viewport.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pipenv run nikola build
+$ ls output/
+</code></pre></div><p>Hm…not sure how to switch to <code>docs/</code>.</p>
+<h1 id="ending-thoughts">Ending Thoughts</h1>
+<ul>
+<li>
+<p>It seems like everyone wants to show off how fast they with those compile
+times in the server logs</p>
+<ul>
+<li>Hugo is fastest &lt; Jekyll &lt; Nikola is slowest</li>
+</ul>
+</li>
+<li>
+<p>GitHub Pages has some tight integration with Jekyll</p>
+</li>
+</ul>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://e4r7hbug.github.io/posts/ldap3/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Using The Python ldap3 Package</span>
+              </a>
+            </span>
+          
+          
+        </div>
+      </div>
+    
+
+    
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://e4r7hbug.github.io/assets/main.js"></script>
+<script src="https://e4r7hbug.github.io/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

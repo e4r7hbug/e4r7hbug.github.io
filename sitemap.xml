@@ -1,56 +1,49 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://e4r7hbug.github.io/posts/ldap3/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://e4r7hbug.github.io/posts/beginning/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://e4r7hbug.github.io/tags/ad/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://e4r7hbug.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://e4r7hbug.github.io/tags/ldap/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://e4r7hbug.github.io/posts/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://e4r7hbug.github.io/tags/python/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://e4r7hbug.github.io/tags/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://e4r7hbug.github.io/</loc>
-    <lastmod>2020-05-14T19:20:50-07:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/tags/ldap/</loc>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/posts/</loc>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/tags/python/</loc>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/tags/</loc>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/posts/ldap3/</loc>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/posts/beginning/</loc>
+    <lastmod>2020-05-14T19:51:32-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://e4r7hbug.github.io/categories/</loc>
   </url>
   
 </urlset>

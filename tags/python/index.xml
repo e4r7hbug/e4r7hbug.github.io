@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>e4r7hbug</title>
-    <link>https://e4r7hbug.github.io/</link>
-    <description>Recent content on e4r7hbug</description>
+    <title>Python on e4r7hbug</title>
+    <link>https://e4r7hbug.github.io/tags/python/</link>
+    <description>Recent content in Python on e4r7hbug</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://e4r7hbug.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://e4r7hbug.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,16 +21,6 @@
 The idea being, have OpenVPN authenticate with Okta and assign VPN Profiles matching your Active Directory (AD) Group.
 The Problem He was trying to query the Okta LDAP endpoint for a list of Groups that a User belongs to.
 Solution Once I installed Apache Directory, I could more easily view the query results.</description>
-    </item>
-    
-    <item>
-      <title>Beginning</title>
-      <link>https://e4r7hbug.github.io/posts/beginning/</link>
-      <pubDate>Wed, 13 Feb 2019 23:36:55 -0800</pubDate>
-      
-      <guid>https://e4r7hbug.github.io/posts/beginning/</guid>
-      <description>Notes I&amp;rsquo;ve wanted to write a blog for a while to keep track of my development and scraps of knowledge. Here&amp;rsquo;s my experience between a few static site generators I&amp;rsquo;m deciding on.
- Hugo Jekyll Nikola  Hugo I decided to forgo the prepackaged binary for the fun of using go get. I like to think that I can see all the text scroll by and understand what&amp;rsquo;s really happening.</description>
     </item>
     
   </channel>

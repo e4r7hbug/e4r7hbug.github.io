@@ -6,10 +6,22 @@
     <description>Recent content in Posts on e4r7hbug</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Feb 2019 23:36:55 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://e4r7hbug.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using The Python ldap3 Package</title>
+      <link>https://e4r7hbug.github.io/posts/ldap3/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://e4r7hbug.github.io/posts/ldap3/</guid>
+      <description>LDAP Lookups For OpenVPN My coworker was having some issues with the ldap3 Package behaving oddly. This came about because OpenVPN Access Server 2.8.0 changed from python-ldap to ldap3.
+The idea being, have OpenVPN authenticate with Okta and assign VPN Profiles matching your Active Directory (AD) Group.
+The Problem He was trying to query the Okta LDAP endpoint for a list of Groups that a User belongs to.
+Solution Once I installed Apache Directory, I could more easily view the query results.</description>
+    </item>
     
     <item>
       <title>Beginning</title>
